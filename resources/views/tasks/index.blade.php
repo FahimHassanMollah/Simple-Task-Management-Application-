@@ -11,8 +11,49 @@
 </head>
 
 <body>
-    <h1>Task list</h1>
-    
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8 mt-5">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h2> Task List</h2>
+                        <a class="btn btn-primary" href="{{ route('tasks.create') }}">New Task</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Details</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($tasks as $task)
+                                    <tr>
+                                        <th scope="row">{{ $task->id }}</th>
+                                        <td>{{ $task->title }}</td>
+                                        <td>{{ $task->description }}</td>
+                                        <td>{{ $task->status }}</td>
+                                        <td>
+                                            <a class="btn btn-success" href="">Edit</a>
+                                            <a class="btn btn-danger" href="">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 

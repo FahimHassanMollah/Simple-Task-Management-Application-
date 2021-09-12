@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/',[TaskController::class,'index']);
+Route::get('/',[TaskController::class,'index'])->name('tasks.index');
+
+Route::resource('/tasks', TaskController::class);
