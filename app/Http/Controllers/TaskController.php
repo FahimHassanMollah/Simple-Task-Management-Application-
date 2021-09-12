@@ -16,7 +16,7 @@ class TaskController extends Controller
     {
         //
         $tasks = Task::get();
-        return view('tasks.index',compact('tasks'));
+        return view('tasks.index', compact('tasks'));
     }
 
     /**
@@ -56,6 +56,7 @@ class TaskController extends Controller
     public function show($id)
     {
         //
+
     }
 
     /**
@@ -67,6 +68,10 @@ class TaskController extends Controller
     public function edit($id)
     {
         //
+
+        $task = Task::findOrFail($id);
+
+        return view('tasks.edit-task', compact('task'));
     }
 
     /**
@@ -79,6 +84,12 @@ class TaskController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $task = Task::findOrFail($id);
+        $task->title = $request->title;
+        $task->description = $request->description;
+        $task->status = $request->status;
+        $task->save();
+        return redirect(route('tasks.index'));
     }
 
     /**

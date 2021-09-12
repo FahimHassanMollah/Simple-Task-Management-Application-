@@ -27,6 +27,7 @@
                                     <th scope="col">Title</th>
                                     <th scope="col">Details</th>
                                     <th scope="col">Status</th>
+
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
@@ -36,14 +37,21 @@
                                         <th scope="row">{{ $task->id }}</th>
                                         <td>{{ $task->title }}</td>
                                         <td>{{ $task->description }}</td>
-                                        <td>{{ $task->status }}</td>
+
                                         <td>
-                                            <a class="btn btn-success" href="">Edit</a>
+                                            @if ($task->status == "open")
+                                                <span class="badge bg-success">{{ $task->status }}</span>
+                                            @else
+                                                  <span class="badge bg-danger">{{ $task->status }}</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a class="btn btn-secondary" href="{{ route('tasks.edit',['task'=> $task->id]) }}">Edit</a>
                                             <a class="btn btn-danger" href="">Delete</a>
                                         </td>
                                     </tr>
                                 @endforeach
-                                
+
 
 
                             </tbody>
