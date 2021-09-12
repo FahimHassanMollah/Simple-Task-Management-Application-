@@ -45,9 +45,13 @@
                                                   <span class="badge bg-danger">{{ $task->status }}</span>
                                             @endif
                                         </td>
-                                        <td>
+                                        <td class="d-flex">
                                             <a class="btn btn-secondary" href="{{ route('tasks.edit',['task'=> $task->id]) }}">Edit</a>
-                                            <a class="btn btn-danger" href="">Delete</a>
+                                            <form action="{{ route('tasks.destroy',['task'=>$task->id]) }}" method="POST">
+                                                @csrf
+                                                @method('delete')
+                                                <button class="btn btn-danger ms-2" >Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
